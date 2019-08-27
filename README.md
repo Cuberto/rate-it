@@ -12,7 +12,9 @@ Cuberto is a leading digital agency with solid design and development expertise.
 - iOS 10.0+
 - Xcode 10
 
-##Description
+![Animation](https://raw.githubusercontent.com/Cuberto/rate-it/master/Screenshots/animation.gif)
+
+## Description
 
 Rate it is showcase of custom user rate screen, with responsive emotional animated controls.
 
