@@ -36,29 +36,32 @@ class MouthView: ProgressableAnimationView {
         updateAnimation(withProgress: progress)
     }
 
-    override var animations: [Animation] {
-    return [Animation(keypath: "path",
-                      values: [.bad: angryPath(ofSize: bounds.size).cgPath,
-                               .normal: normalPath(ofSize: bounds.size).cgPath,
-                               .good: goodPath(ofSize: bounds.size).cgPath])]
+    private let pathAnimation = MouthViewPathAnimation()
+    override var animations: [RateAnimation] {
+        return [pathAnimation]
     }
-
-//     override func createAnimation() -> CAAnimation {
-//
-//        let pathAnimation = CAKeyframeAnimation(keyPath: "path")
-//        pathAnimation.values = [angryPath(ofSize: bounds.size).cgPath,
-//                                normalPath(ofSize: bounds.size).cgPath,
-//                                goodPath(ofSize: bounds.size).cgPath]
-//        pathAnimation.keyTimes = [0, 0.5, 1.0]
-//        return pathAnimation
-//    }
 
     override var animationLayer: CALayer {
         return mouthLayer
     }
 }
 
-extension MouthView {
+private struct MouthViewPathAnimation: RateAnimation {
+
+    var keypath: String {
+        return "path"
+    }
+
+    func value(for state: Rate, viewSize: CGSize) -> Any {
+        switch state {
+            case .bad:
+                return angryPath(ofSize: viewSize).cgPath
+            case .normal:
+                return normalPath(ofSize: viewSize).cgPath
+            case .good:
+                return goodPath(ofSize: viewSize).cgPath
+        }
+    }
 
     private func angryPath(ofSize size: CGSize) -> UIBezierPath {
         let orig = CGSize(width: 120, height: 40)

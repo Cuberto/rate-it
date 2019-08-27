@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension AnimationState {
+extension Rate {
     var title: String {
         switch self {
         case .bad:
@@ -24,16 +24,16 @@ extension AnimationState {
 class TitleView: AnimationView {
 
     class TitleLabel: UILabel {
-        var state: AnimationState!
+        var state: Rate!
         var csHorPosition: NSLayoutConstraint!
         var csVertPosition: NSLayoutConstraint!
     }
 
-    var labels: [AnimationState: TitleLabel] = [:]
+    var labels: [Rate: TitleLabel] = [:]
     override func configure() {
         super.configure()
         backgroundColor = .clear
-        AnimationState.allCases.forEach {
+        Rate.allCases.forEach {
             let label = TitleLabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.font = UIFont.systemFont(ofSize: 27, weight: .regular)
@@ -52,7 +52,7 @@ class TitleView: AnimationView {
         updateState(to: .bad)
     }
 
-    func updateState(to state: AnimationState) {
+    func updateState(to state: Rate) {
         self.state = state
         let offset: CGFloat = 70
         for label in labels.values {
@@ -67,8 +67,8 @@ class TitleView: AnimationView {
         }
     }
     
-    var state: AnimationState = .bad
-    func animate(to state: AnimationState, duration: TimeInterval = 0.2) {
+    var state: Rate = .bad
+    func animate(to state: Rate, duration: TimeInterval = 0.2) {
         guard state != self.state else {
             return
         }

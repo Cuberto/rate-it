@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum AnimationState: CaseIterable {
+enum Rate: CaseIterable {
     case bad
     case normal
     case good
 
-    static var allCases: [AnimationState] {
+    static var allCases: [Rate] {
         return [.bad, .normal, .good]
     }
 
@@ -29,9 +29,9 @@ enum AnimationState: CaseIterable {
     }
 }
 
-struct Animation {
-    let keypath: String
-    let values: [AnimationState: Any]
+protocol RateAnimation {
+    var keypath: String { get }
+    func value(for state: Rate, viewSize: CGSize) -> Any
 }
 
 class AnimationView: UIView {
@@ -76,15 +76,15 @@ class ProgressableAnimationView: AnimationView {
         return "animation"
     }
 
-    var animations: [Animation] {
+    var animations: [RateAnimation] {
         return []
     }
 
     func updateAnimation(withProgress progress: Double) {
        let coreAnimations: [CAAnimation] = animations.map { animation in
             let coreAnimation = CAKeyframeAnimation(keyPath: animation.keypath)
-            coreAnimation.values = AnimationState.allCases.map { animation.values[$0]! }
-            coreAnimation.keyTimes = AnimationState.allCases.map { NSNumber(value: $0.keyTime) }
+            coreAnimation.values = Rate.allCases.map { animation.value(for: $0, viewSize: animationLayer.bounds.size) }
+            coreAnimation.keyTimes = Rate.allCases.map { NSNumber(value: $0.keyTime) }
             return coreAnimation
         }
         let animationGroup = CAAnimationGroup()
@@ -104,14 +104,14 @@ class ProgressableAnimationView: AnimationView {
         }
     }
 
-    func animate(to state: AnimationState, duration: TimeInterval = 0.2) {
+    func animate(to state: Rate, duration: TimeInterval = 0.2) {
        CATransaction.begin()
        CATransaction.setDisableActions(true)
        let coreAnimations: [CAAnimation] = animations.compactMap { animation in
             guard let currentValue = animationLayer.presentation()?.value(forKeyPath: animation.keypath) else {
                 return nil
             }
-            let targetValues = animation.values[state]
+            let targetValues = animation.value(for: state, viewSize: animationLayer.bounds.size)
             let coreAnimation = CABasicAnimation(keyPath: animation.keypath)
             coreAnimation.fromValue = currentValue
             coreAnimation.toValue = targetValues

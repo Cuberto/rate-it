@@ -102,15 +102,10 @@ class EyeView: ProgressableAnimationView {
             appleLayer.transform = CATransform3DMakeTranslation(xOffset, yOffset, 1)
     }
 
-    override var animations: [Animation] {
-        return [Animation(keypath: "transform",
-                          values: [.bad: CATransform3DIdentity,
-                                   .normal: CATransform3DMakeRotation(6 * CGFloat.pi/180, 0, 0, 1),
-                                   .good: CATransform3DIdentity]),
-                Animation(keypath: "path",
-                          values: [.bad: angryPath(ofSize: bounds.size).cgPath,
-                                   .normal: normalPath(ofSize: bounds.size).cgPath,
-                                   .good: goodPath(ofSize: bounds.size).cgPath])]
+    private let pathAnimation = EyeViewPathAnimation()
+    private let transformAnimation = EyeViewTransformAnimation()
+    override var animations: [RateAnimation] {
+        return [pathAnimation, transformAnimation]
     }
     override var animationLayer: CALayer {
         return eyeLayer
@@ -125,7 +120,41 @@ class EyeView: ProgressableAnimationView {
 
 // MARK: - Animation
 
-extension EyeView {
+private struct EyeViewTransformAnimation: RateAnimation  {
+
+    var keypath: String {
+        return "transform"
+    }
+
+    func value(for state: Rate, viewSize: CGSize) -> Any {
+        switch state {
+            case .bad:
+                return CATransform3DIdentity
+            case .normal:
+                return CATransform3DMakeRotation(6 * CGFloat.pi/180, 0, 0, 1)
+            case .good:
+                return CATransform3DIdentity
+        }
+    }
+
+}
+
+private struct EyeViewPathAnimation: RateAnimation {
+
+    var keypath: String {
+        return "path"
+    }
+
+    func value(for state: Rate, viewSize: CGSize) -> Any {
+        switch state {
+            case .bad:
+                return angryPath(ofSize: viewSize).cgPath
+            case .normal:
+                return normalPath(ofSize: viewSize).cgPath
+            case .good:
+                return goodPath(ofSize: viewSize).cgPath
+        }
+    }
 
     private func angryPath(ofSize size: CGSize) -> UIBezierPath {
         let orig = CGSize(width: 90, height: 70)

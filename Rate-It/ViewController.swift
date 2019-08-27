@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var textValueView: TitleView!
     @IBOutlet private weak var faceContainer: UIView!
     private var shakeTimer: Timer?
-    private let startState: AnimationState = .normal
+    private let startState: Rate = .normal
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         guard shakeTimer == nil else {
             return
         }
-        shakeTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] (timer) in
+        shakeTimer = Timer.scheduledTimer(withTimeInterval: 1.2, repeats: true) {[weak self] (timer) in
             guard let strongSelf = self else {
                 return
             }
@@ -77,8 +77,8 @@ class ViewController: UIViewController {
         return (slider.value - slider.minimumValue) / (slider.maximumValue - slider.minimumValue)
     }
 
-    private var targetState: AnimationState {
-        return AnimationState.allCases.reduce((.bad, Float.greatestFiniteMagnitude)) { (acc, state) -> (AnimationState, Float) in
+    private var targetState: Rate {
+        return Rate.allCases.reduce((.bad, Float.greatestFiniteMagnitude)) { (acc, state) -> (Rate, Float) in
             let diff = abs(normalizedProgress - state.keyTime)
             if  diff < abs(acc.1) {
                 return (state, diff)
