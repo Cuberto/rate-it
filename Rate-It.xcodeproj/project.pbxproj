@@ -12,6 +12,14 @@
 		CE42D3EE2315110900F6F96A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE42D3EC2315110900F6F96A /* Main.storyboard */; };
 		CE42D3F02315110C00F6F96A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE42D3EF2315110C00F6F96A /* Assets.xcassets */; };
 		CE42D3F32315110C00F6F96A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE42D3F12315110C00F6F96A /* LaunchScreen.storyboard */; };
+		CE42D400231518CB00F6F96A /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3FB231518CB00F6F96A /* TitleView.swift */; };
+		CE42D401231518CB00F6F96A /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3FC231518CB00F6F96A /* EyeView.swift */; };
+		CE42D402231518CB00F6F96A /* ProgressableAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3FD231518CB00F6F96A /* ProgressableAnimationView.swift */; };
+		CE42D403231518CB00F6F96A /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3FE231518CB00F6F96A /* BackgroundView.swift */; };
+		CE42D404231518CB00F6F96A /* MouthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D3FF231518CB00F6F96A /* MouthView.swift */; };
+		CE42D40623151A5B00F6F96A /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D40523151A5B00F6F96A /* ShakeView.swift */; };
+		CE42D40823151C8900F6F96A /* GeometryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D40723151C8800F6F96A /* GeometryHelper.swift */; };
+		CE42D40C2315284700F6F96A /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42D40B2315284700F6F96A /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		CE42D3EF2315110C00F6F96A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE42D3F22315110C00F6F96A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE42D3F42315110C00F6F96A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE42D3FB231518CB00F6F96A /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		CE42D3FC231518CB00F6F96A /* EyeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
+		CE42D3FD231518CB00F6F96A /* ProgressableAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressableAnimationView.swift; sourceTree = "<group>"; };
+		CE42D3FE231518CB00F6F96A /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		CE42D3FF231518CB00F6F96A /* MouthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouthView.swift; sourceTree = "<group>"; };
+		CE42D40523151A5B00F6F96A /* ShakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
+		CE42D40723151C8800F6F96A /* GeometryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryHelper.swift; sourceTree = "<group>"; };
+		CE42D40B2315284700F6F96A /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,30 @@
 		CE42D3E72315110900F6F96A /* Rate-It */ = {
 			isa = PBXGroup;
 			children = (
+				CE42D3FA231518CB00F6F96A /* Views */,
 				CE42D3E82315110900F6F96A /* AppDelegate.swift */,
 				CE42D3EA2315110900F6F96A /* ViewController.swift */,
+				CE42D40723151C8800F6F96A /* GeometryHelper.swift */,
 				CE42D3EC2315110900F6F96A /* Main.storyboard */,
 				CE42D3EF2315110C00F6F96A /* Assets.xcassets */,
 				CE42D3F12315110C00F6F96A /* LaunchScreen.storyboard */,
 				CE42D3F42315110C00F6F96A /* Info.plist */,
 			);
 			path = "Rate-It";
+			sourceTree = "<group>";
+		};
+		CE42D3FA231518CB00F6F96A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE42D3FB231518CB00F6F96A /* TitleView.swift */,
+				CE42D3FC231518CB00F6F96A /* EyeView.swift */,
+				CE42D3FD231518CB00F6F96A /* ProgressableAnimationView.swift */,
+				CE42D3FE231518CB00F6F96A /* BackgroundView.swift */,
+				CE42D3FF231518CB00F6F96A /* MouthView.swift */,
+				CE42D40523151A5B00F6F96A /* ShakeView.swift */,
+				CE42D40B2315284700F6F96A /* CustomSlider.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +167,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE42D403231518CB00F6F96A /* BackgroundView.swift in Sources */,
+				CE42D40C2315284700F6F96A /* CustomSlider.swift in Sources */,
+				CE42D40623151A5B00F6F96A /* ShakeView.swift in Sources */,
 				CE42D3EB2315110900F6F96A /* ViewController.swift in Sources */,
 				CE42D3E92315110900F6F96A /* AppDelegate.swift in Sources */,
+				CE42D401231518CB00F6F96A /* EyeView.swift in Sources */,
+				CE42D404231518CB00F6F96A /* MouthView.swift in Sources */,
+				CE42D400231518CB00F6F96A /* TitleView.swift in Sources */,
+				CE42D402231518CB00F6F96A /* ProgressableAnimationView.swift in Sources */,
+				CE42D40823151C8900F6F96A /* GeometryHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
