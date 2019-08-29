@@ -18,4 +18,4 @@ Cuberto is a leading digital agency with solid design and development expertise.
 
 Rate it is showcase of custom user rate screen, with responsive emotional animated controls.
 
-Whether you're looking to increase brand engagement, enhance productivity, or cultivate the best online presence for your company, you've come to the right place. Send us a request to [info@cuberto.ru](mailto://info@cuberto.ru)
+Whether you're looking to increase brand engagement, enhance productivity, or cultivate the best online presence for your company, you've come to the right place. Send us a request to [info@cuberto.com](mailto://info@cuberto.com)
